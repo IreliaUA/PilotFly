@@ -7,7 +7,10 @@ final class GameScene: SKScene {
     
     weak var gameViewController: IGameViewController?
     var currentLevelIndex: Int = 0
+    var isCanTrack: Bool = false
     private var isColorChanged = false
+    var extraCloud: Cloud?
+    private var cloudsZone1: SKSpriteNode?
     private var touchedChangeColorNodes: Set<SKNode> = []
     
     private lazy var cameraNode = SKCameraNode()
@@ -25,8 +28,7 @@ final class GameScene: SKScene {
     private func setUpScene() {
         setupCamera()
         setupGameNodes()
-        setupGame()
-        setupMotionManager()
+        setupGame()        
     }
     
     private func setupMotionManager() {
@@ -60,13 +62,28 @@ final class GameScene: SKScene {
     private func startGame() {
         isCanStart = true
         addChild(player)
+        if let start = children.first(where: {$0.name == "StartPlane"}) {
+            player.position = start.position
+        }
+        
+        self.run(.sequence([
+            .wait(forDuration: 3.7),
+            .run {
+                self.isCanTrack = true
+               
+            },
+            .wait(forDuration: 1),
+            .run {
+                self.setupMotionManager()
+            }
+            
+        ]))
         
         let wait = SKAction.wait(forDuration: 3.0)
         let moveUp = SKAction.moveBy(x: 0, y: 2, duration: 0.01)
         let startMoving = SKAction.repeatForever(moveUp)
         
-        player.run(SKAction.sequence([wait, startMoving]), withKey: "moveUp")
-        
+        player.run(SKAction.sequence([startMoving]), withKey: "moveUp")
         player.setTrail(targetNode: self)
         player.activateTrail()
     }
@@ -93,12 +110,12 @@ final class GameScene: SKScene {
                 }
             case "CloudsZone1":
                 if let zone = child as? SKSpriteNode {
+                    cloudsZone1 = zone
                     
                     spawnClouds(in: zone)
-                    
+                }
                     //                    let cloud = Cloud(size: CGSize(width: CGFloat.random(in: 100...500), height:  CGFloat.random(in: 100...500)))
                     //                    cloud.position = CGPoint(x: CGFloat.random(in: zone.frame.minX...zone.frame.maxX) , y: zone.frame.midY)
-                }
             case "ChangeColor":
                 if let changeColor = child as? ChangeColor {
                     changeColor.setupPhysics()
@@ -125,16 +142,16 @@ final class GameScene: SKScene {
             UserDefaults.standard.set(true, forKey: "is\(self.currentLevelIndex)GameLevelCompleted")
         }
     }
-    
-    
+
     private func spawnClouds(in zone: SKSpriteNode, extraDensity: Bool = false) {
         let zoneWidth = zone.frame.width
         let zoneHeight = zone.frame.height
-        let baseCount = Int.random(in: 1...3)
-        let cloudCount = extraDensity ? min(baseCount + 1, 4) : baseCount
+        let baseCount = Int.random(in: 1...2)
+        
+        let cloudCount = extraDensity ? baseCount + 1 : baseCount
         
         let playerSafeZoneWidth: CGFloat = 340
-        let safeZoneStartX = CGFloat.random(in: zone.frame.minX + 50...zone.frame.maxX - 50)
+        let safeZoneStartX = CGFloat.random(in: zone.frame.minX + 100...zone.frame.maxX - 100)
         
         var placedCloudFrames: [CGRect] = []
         
@@ -181,9 +198,20 @@ final class GameScene: SKScene {
     }
     
     private func spawnExtraClouds() {
-        for case let zone as SKSpriteNode in children where zone.name == "CloudsZone1" {
-            zone.children.filter { $0.name == "cloud" }.forEach { $0.removeFromParent() }
-            spawnClouds(in: zone, extraDensity: true)
+        children.forEach { child in
+            if let zone = child as? SKSpriteNode, zone.name == "CloudsZone1" {
+                children.forEach { childMini in
+                    if childMini.name == "cloud" {
+                        childMini.removeFromParent()
+                    }
+                }
+            }
+        }
+        
+        children.forEach { child in
+            if let zone = child as? SKSpriteNode, zone.name == "CloudsZone1" {
+                spawnClouds(in: zone, extraDensity: true)
+            }
         }
     }
 
@@ -211,33 +239,11 @@ final class GameScene: SKScene {
             if let color = color {
                 cloud.color = color
                 cloud.colorBlendFactor = 0.6
-                player.startShakingPlayer()
-                spawnExtraClouds()
             } else {
                 cloud.colorBlendFactor = 0.0
-                player.stopShakingPlayer()
             }
         }
     }
-    
-    //    private func changeCloudsColor(to color: UIColor) {
-    //        for case let cloud as Cloud in children {
-    //            cloud.childNode(withName: "ColorOverlay")?.removeFromParent()
-    //
-    //            let overlay = SKSpriteNode(color: color, size: cloud.size)
-    //            overlay.name = "ColorOverlay"
-    //            overlay.zPosition = 1
-    //            overlay.alpha = 0.0
-    //            overlay.position = .zero
-    //            overlay.zRotation = 0
-    //            overlay.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-    //
-    //            cloud.addChild(overlay)
-    //
-    //            let fadeIn = SKAction.fadeAlpha(to: 0.5, duration: 0.5)
-    //            overlay.run(fadeIn)
-    //        }
-    //    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -249,7 +255,9 @@ extension GameScene: SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         if player.parent != nil {
-            self.cameraNode.run(.moveTo(y: player.position.y, duration: 0.2))
+            if isCanTrack {
+                self.cameraNode.run(.moveTo(y: player.position.y, duration: 0.2))
+            }
             //            self.cameraNode.position.y = player.position.y
         }
     }
@@ -297,9 +305,14 @@ extension GameScene: SKPhysicsContactDelegate {
                 if !isColorChanged {
                     changeBackgroundColor(to: .darkRedC)
                     changeCloudsColor(to: .darkGrayC)
+                    player.startShakingPlayer()
+                    
+                    spawnExtraClouds()
+                    
                 } else {
                     changeBackgroundColor(to: .clear)
                     changeCloudsColor(to: nil)
+                    player.stopShakingPlayer()
                 }
                 isColorChanged.toggle()
             }

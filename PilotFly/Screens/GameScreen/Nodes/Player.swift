@@ -7,7 +7,7 @@ class Player: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "plane")
-        super.init(texture: texture, color: .red, size: CGSize(width: 300, height: 400))
+        super.init(texture: texture, color: .red, size: CGSize(width: 200, height: 250))
         self.zPosition = ZPositions.player
         setupPhysics()
     }
@@ -50,8 +50,8 @@ class Player: SKSpriteNode {
     func startShakingPlayer() {
         if action(forKey: shakeActionKey) != nil { return }
 
-        let moveUp = SKAction.moveBy(x: 0, y: 10, duration: 0.05)
-        let moveDown = SKAction.moveBy(x: 0, y: -10, duration: 0.05)
+        let moveUp = SKAction.moveBy(x: 30, y: 10, duration: 0.05)
+        let moveDown = SKAction.moveBy(x: -30, y: -10, duration: 0.05)
         let shakeSequence = SKAction.sequence([moveUp, moveDown])
         let shakeForever = SKAction.repeatForever(shakeSequence)
 
