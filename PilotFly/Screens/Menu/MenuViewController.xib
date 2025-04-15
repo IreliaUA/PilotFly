@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="PilotFly" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="LA7-N3-7I9">
+                    <rect key="frame" x="56" y="349" width="281" height="154"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Haf-Fv-muL">
+                            <rect key="frame" x="0.0" y="0.0" width="281" height="75"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="75" id="Ppx-SV-1bt"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="settings"/>
+                            <connections>
+                                <action selector="settingsButtonAction:" destination="-1" eventType="touchUpInside" id="SXZ-px-E3L"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWj-D3-vBH">
+                            <rect key="frame" x="0.0" y="79" width="281" height="75"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="75" id="ChO-qz-Qbh"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="inform"/>
+                            <connections>
+                                <action selector="infoButtonAction:" destination="-1" eventType="touchUpInside" id="lnP-5q-dpL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjN-HX-1Wi">
+                    <rect key="frame" x="99.666666666666686" y="716" width="194" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="AjO-vS-Pl7"/>
+                        <constraint firstAttribute="width" constant="194" id="C7X-I5-UXV"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="play"/>
+                    <connections>
+                        <action selector="playButtonAction:" destination="-1" eventType="touchUpInside" id="rKY-os-3U0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.28235294119999998" green="0.13725490200000001" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LA7-N3-7I9" secondAttribute="trailing" constant="56" id="3hQ-c4-8Px"/>
+                <constraint firstItem="LA7-N3-7I9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GAy-mp-IMa"/>
+                <constraint firstItem="LA7-N3-7I9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="56" id="H4K-hX-O5N"/>
+                <constraint firstItem="HjN-HX-1Wi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="q87-wc-e8s"/>
+                <constraint firstItem="LA7-N3-7I9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="qTI-qb-kMa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HjN-HX-1Wi" secondAttribute="bottom" constant="12" id="qcG-pw-CFD"/>
+            </constraints>
+            <point key="canvasLocation" x="57.251908396946561" y="20.422535211267608"/>
+        </view>
+    </objects>
+</document>

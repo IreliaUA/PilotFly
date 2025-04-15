@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="PilotFly" customModuleProvider="target">
+            <connections>
+                <outlet property="musicCheckBox" destination="pTw-sZ-cTs" id="ctF-I7-jhY"/>
+                <outlet property="soundCheckBox" destination="5UF-cY-tJ1" id="rzL-zR-iVE"/>
+                <outlet property="vibrationCheckBox" destination="zuj-92-v9X" id="tfx-XH-h4F"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Q5m-cF-rzf">
+                    <rect key="frame" x="57" y="248.66666666666663" width="279" height="355"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW9-Rj-Dck">
+                            <rect key="frame" x="0.0" y="0.0" width="279" height="76"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opz-uy-bgb">
+                                    <rect key="frame" x="0.0" y="0.0" width="279" height="76"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="76" id="DgD-BZ-zgr"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UF-cY-tJ1">
+                                    <rect key="frame" x="182" y="22.000000000000028" width="57" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="26" id="e8d-9i-SYp"/>
+                                        <constraint firstAttribute="width" constant="57" id="wAi-R9-MkZ"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="on"/>
+                                    <connections>
+                                        <action selector="soundCheckBoxAction:" destination="-1" eventType="touchUpInside" id="QcQ-ft-9Ni"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="opz-uy-bgb" secondAttribute="bottom" id="ErF-OH-Aja"/>
+                                <constraint firstAttribute="bottom" secondItem="5UF-cY-tJ1" secondAttribute="bottom" constant="28" id="Lhx-63-wZo"/>
+                                <constraint firstItem="opz-uy-bgb" firstAttribute="top" secondItem="hW9-Rj-Dck" secondAttribute="top" id="R5B-Zx-pzC"/>
+                                <constraint firstItem="5UF-cY-tJ1" firstAttribute="top" secondItem="hW9-Rj-Dck" secondAttribute="top" constant="22" id="R91-nU-eAm"/>
+                                <constraint firstAttribute="trailing" secondItem="5UF-cY-tJ1" secondAttribute="trailing" constant="40" id="ggS-rg-sYG"/>
+                                <constraint firstAttribute="trailing" secondItem="opz-uy-bgb" secondAttribute="trailing" id="jK7-fO-hld"/>
+                                <constraint firstItem="opz-uy-bgb" firstAttribute="leading" secondItem="hW9-Rj-Dck" secondAttribute="leading" id="rD2-fw-VEx"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JU4-sK-d3Z">
+                            <rect key="frame" x="0.0" y="90.000000000000028" width="279" height="76"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vibrationButton" translatesAutoresizingMaskIntoConstraints="NO" id="ivW-Vu-JET">
+                                    <rect key="frame" x="0.0" y="0.0" width="279" height="76"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="76" id="aRD-1X-SkY"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuj-92-v9X">
+                                    <rect key="frame" x="182" y="22" width="57" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="57" id="XFu-ck-wdV"/>
+                                        <constraint firstAttribute="height" constant="26" id="tO4-HC-eKP"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="on"/>
+                                    <connections>
+                                        <action selector="vibrationCheckBoxAction:" destination="-1" eventType="touchUpInside" id="oZF-9C-5Qg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="zuj-92-v9X" secondAttribute="bottom" constant="28" id="PCC-P7-LJ2"/>
+                                <constraint firstAttribute="bottom" secondItem="ivW-Vu-JET" secondAttribute="bottom" id="Q9c-pF-6w7"/>
+                                <constraint firstItem="zuj-92-v9X" firstAttribute="top" secondItem="JU4-sK-d3Z" secondAttribute="top" constant="22" id="YDu-Sx-S1Z"/>
+                                <constraint firstItem="ivW-Vu-JET" firstAttribute="leading" secondItem="JU4-sK-d3Z" secondAttribute="leading" id="fTV-3h-LrH"/>
+                                <constraint firstItem="ivW-Vu-JET" firstAttribute="top" secondItem="JU4-sK-d3Z" secondAttribute="top" id="mrF-Js-RoO"/>
+                                <constraint firstAttribute="trailing" secondItem="ivW-Vu-JET" secondAttribute="trailing" id="t8u-cT-Sd9"/>
+                                <constraint firstAttribute="trailing" secondItem="zuj-92-v9X" secondAttribute="trailing" constant="40" id="tGC-fW-gRq"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeL-m0-sTp">
+                            <rect key="frame" x="0.0" y="180.00000000000003" width="279" height="75.999999999999972"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="musicButton" translatesAutoresizingMaskIntoConstraints="NO" id="Jhq-rF-LCB">
+                                    <rect key="frame" x="0.0" y="0.0" width="279" height="76"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="76" id="CTz-GM-23w"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTw-sZ-cTs">
+                                    <rect key="frame" x="182" y="22" width="57" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="26" id="Vcn-qb-blj"/>
+                                        <constraint firstAttribute="width" constant="57" id="vMN-R6-fUH"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="on"/>
+                                    <connections>
+                                        <action selector="musicCheckBoxAction:" destination="-1" eventType="touchUpInside" id="eTT-SZ-EFf"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Jhq-rF-LCB" firstAttribute="top" secondItem="UeL-m0-sTp" secondAttribute="top" id="5bY-RP-vhs"/>
+                                <constraint firstAttribute="trailing" secondItem="pTw-sZ-cTs" secondAttribute="trailing" constant="40" id="OZO-eF-Gkc"/>
+                                <constraint firstItem="pTw-sZ-cTs" firstAttribute="top" secondItem="UeL-m0-sTp" secondAttribute="top" constant="22" id="QJL-km-wau"/>
+                                <constraint firstItem="Jhq-rF-LCB" firstAttribute="leading" secondItem="UeL-m0-sTp" secondAttribute="leading" id="SXR-Q9-bec"/>
+                                <constraint firstAttribute="trailing" secondItem="Jhq-rF-LCB" secondAttribute="trailing" id="Wxa-Dr-kx7"/>
+                                <constraint firstAttribute="bottom" secondItem="pTw-sZ-cTs" secondAttribute="bottom" constant="28" id="nWk-aj-9Va"/>
+                                <constraint firstAttribute="bottom" secondItem="Jhq-rF-LCB" secondAttribute="bottom" id="wVR-wX-gh2"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsE-pT-4vs">
+                            <rect key="frame" x="0.0" y="270" width="279" height="85"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="85" id="FmV-XV-OQQ"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="privacy"/>
+                            <connections>
+                                <action selector="privacyButtonAction:" destination="-1" eventType="touchUpInside" id="Qir-8Z-6TR"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="PsE-pT-4vs" firstAttribute="leading" secondItem="Q5m-cF-rzf" secondAttribute="leading" id="Onj-AS-kKI"/>
+                        <constraint firstAttribute="trailing" secondItem="PsE-pT-4vs" secondAttribute="trailing" id="qj2-hg-S89"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="day-Ba-Caj">
+                    <rect key="frame" x="20" y="71" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="gn0-X9-jyY"/>
+                        <constraint firstAttribute="width" constant="50" id="k6d-zn-EMw"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="back"/>
+                    <connections>
+                        <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="GM9-Qs-4eR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemMintColor"/>
+            <constraints>
+                <constraint firstItem="Q5m-cF-rzf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="1Md-Hm-mZg"/>
+                <constraint firstItem="Q5m-cF-rzf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="57" id="Gg4-dI-ucs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q5m-cF-rzf" secondAttribute="trailing" constant="57" id="Yq7-GW-5cF"/>
+                <constraint firstItem="day-Ba-Caj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="ZCP-tE-Qv1"/>
+                <constraint firstItem="day-Ba-Caj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="pCO-zx-RUq"/>
+                <constraint firstItem="Q5m-cF-rzf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wFC-eS-9iJ"/>
+            </constraints>
+            <point key="canvasLocation" x="49.618320610687022" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="musicButton" width="317" height="77"/>
+        <image name="vibrationButton" width="317" height="77"/>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
