@@ -8,6 +8,7 @@ final class GameScene: SKScene {
     weak var gameViewController: IGameViewController?
     var currentLevelIndex: Int = 0
     private var isColorChanged = false
+    private var touchedChangeColorNodes: Set<SKNode> = []
     
     private lazy var cameraNode = SKCameraNode()
     
@@ -126,16 +127,16 @@ final class GameScene: SKScene {
     }
     
     
-    private func spawnClouds(in zone: SKSpriteNode) {
+    private func spawnClouds(in zone: SKSpriteNode, extraDensity: Bool = false) {
         let zoneWidth = zone.frame.width
         let zoneHeight = zone.frame.height
-        let cloudCount = Int.random(in: 1...3)
+        let baseCount = Int.random(in: 1...3)
+        let cloudCount = extraDensity ? min(baseCount + 1, 4) : baseCount
         
         let playerSafeZoneWidth: CGFloat = 340
-        
-        let totalCloudWidth = zoneWidth - playerSafeZoneWidth
-        
         let safeZoneStartX = CGFloat.random(in: zone.frame.minX + 50...zone.frame.maxX - 50)
+        
+        var placedCloudFrames: [CGRect] = []
         
         for _ in 0..<cloudCount {
             let cloudWidth = CGFloat.random(in: 100...400)
@@ -143,31 +144,56 @@ final class GameScene: SKScene {
             
             var cloudX: CGFloat
             var attempts = 0
+            var finalFrame: CGRect?
+            
             repeat {
                 cloudX = CGFloat.random(in: zone.frame.minX...(zone.frame.maxX - cloudWidth))
+                let potentialFrame = CGRect(x: cloudX, y: 0, width: cloudWidth, height: cloudHeight)
+                
+                let overlaps = placedCloudFrames.contains(where: { existing in
+                    let minVisibleWidth = min(existing.width, potentialFrame.width) / 2
+                    return existing.intersects(potentialFrame.insetBy(dx: -minVisibleWidth, dy: 0))
+                })
+                
+                let insideSafeZone = cloudX < safeZoneStartX + playerSafeZoneWidth &&
+                cloudX + cloudWidth > safeZoneStartX
+                
+                if !overlaps && !insideSafeZone {
+                    finalFrame = potentialFrame
+                    break
+                }
+                
                 attempts += 1
-                if attempts > 10 { break }
-            } while cloudX < safeZoneStartX + playerSafeZoneWidth && cloudX + cloudWidth > safeZoneStartX
+            } while attempts < 10
+            
+            guard let frame = finalFrame else { continue }
             
             let cloudY = zone.frame.midY
-            
-            let cloud = Cloud(size: CGSize(width: cloudWidth, height: cloudHeight))
-            cloud.position = CGPoint(x: cloudX + cloudWidth/2, y: cloudY)
+            let cloud = Cloud(size: CGSize(width: frame.width, height: frame.height))
+            cloud.position = CGPoint(x: frame.midX, y: cloudY)
             cloud.name = "cloud"
             cloud.zPosition = 50
             cloud.setupPhysics()
             
+            placedCloudFrames.append(frame)
             addChild(cloud)
         }
     }
     
+    private func spawnExtraClouds() {
+        for case let zone as SKSpriteNode in children where zone.name == "CloudsZone1" {
+            zone.children.filter { $0.name == "cloud" }.forEach { $0.removeFromParent() }
+            spawnClouds(in: zone, extraDensity: true)
+        }
+    }
+
     private func changeBackgroundColor(to color: UIColor) {
         if let bgSprite = childNode(withName: "BgSprite") as? SKSpriteNode {
             let colorOverlay = SKSpriteNode(color: color, size: bgSprite.size)
             colorOverlay.position = bgSprite.position
             colorOverlay.zPosition = bgSprite.zPosition + 1
             colorOverlay.alpha = 0.5
-          
+            
             if let existingOverlay = childNode(withName: "ColorOverlay") {
                 existingOverlay.removeFromParent()
             }
@@ -179,15 +205,39 @@ final class GameScene: SKScene {
             colorOverlay.run(fadeAction)
         }
     }
-
-    private func changeCloudsColor(to color: UIColor) {
-        children.forEach { child in
-            if let cloud = child as? Cloud {
-                let colorAction = SKAction.colorize(with: color, colorBlendFactor: 1.0, duration: 0.5)
-                cloud.run(colorAction)
+    
+    private func changeCloudsColor(to color: UIColor?) {
+        for case let cloud as Cloud in children {
+            if let color = color {
+                cloud.color = color
+                cloud.colorBlendFactor = 0.6
+                player.startShakingPlayer()
+                spawnExtraClouds()
+            } else {
+                cloud.colorBlendFactor = 0.0
+                player.stopShakingPlayer()
             }
         }
     }
+    
+    //    private func changeCloudsColor(to color: UIColor) {
+    //        for case let cloud as Cloud in children {
+    //            cloud.childNode(withName: "ColorOverlay")?.removeFromParent()
+    //
+    //            let overlay = SKSpriteNode(color: color, size: cloud.size)
+    //            overlay.name = "ColorOverlay"
+    //            overlay.zPosition = 1
+    //            overlay.alpha = 0.0
+    //            overlay.position = .zero
+    //            overlay.zRotation = 0
+    //            overlay.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    //
+    //            cloud.addChild(overlay)
+    //
+    //            let fadeIn = SKAction.fadeAlpha(to: 0.5, duration: 0.5)
+    //            overlay.run(fadeIn)
+    //        }
+    //    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -240,14 +290,19 @@ extension GameScene: SKPhysicsContactDelegate {
             lhs: firstBody.categoryBitMask & PhysicsBodies.player,
             rhs: secondBody.categoryBitMask & PhysicsBodies.changeColor
         ) {
-//            if !isColorChanged {
-                changeBackgroundColor(to: .darkRed)
-                changeCloudsColor(to: .darkGray)
-//            } else {
-//                changeBackgroundColor(to: .clear)
-//                changeCloudsColor(to: .clear)
-//            }
-//            isColorChanged.toggle()
+            
+            if let node = secondBody.node, !touchedChangeColorNodes.contains(node) {
+                touchedChangeColorNodes.insert(node)
+                
+                if !isColorChanged {
+                    changeBackgroundColor(to: .darkRedC)
+                    changeCloudsColor(to: .darkGrayC)
+                } else {
+                    changeBackgroundColor(to: .clear)
+                    changeCloudsColor(to: nil)
+                }
+                isColorChanged.toggle()
+            }
         }
     }
     

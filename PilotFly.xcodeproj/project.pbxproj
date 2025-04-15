@@ -241,13 +241,13 @@
 			isa = PBXGroup;
 			children = (
 				39576FAE2DA6E34700C320E3 /* Nodes */,
-				39576FAF2DA6E34700C320E3 /* GameScene.sks */,
 				39576FB02DA6E34700C320E3 /* GameViewController.xib */,
 				39576FB12DA6E34700C320E3 /* GamePresenter.swift */,
 				39576FB22DA6E34700C320E3 /* GameViewController.swift */,
 				39576FB32DA6E34700C320E3 /* GameAssembly.swift */,
 				39576FB42DA6E34700C320E3 /* GameViewModelFactory.swift */,
 				39576FB62DA6E34700C320E3 /* GameViewModel.swift */,
+				39576FAF2DA6E34700C320E3 /* GameScene.sks */,
 				39576FB52DA6E34700C320E3 /* GameScene.swift */,
 				39576FE32DA988F300C320E3 /* Assets.xcassets */,
 				39576FE42DA988F300C320E3 /* PlaneTail.sks */,

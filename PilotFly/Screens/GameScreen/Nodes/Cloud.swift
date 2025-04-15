@@ -5,11 +5,12 @@ import SpriteKit
 class Cloud: SKSpriteNode {
     
     init(size: CGSize) {
-        super.init(texture: nil, color: .red, size: size)
+        let texture = SKTexture(imageNamed: "cloud")
+        super.init(texture: texture, color: .red, size: size)
     }
     
     func setupPhysics(isLower: Bool = false) {
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.size)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = false
         self.physicsBody?.allowsRotation = false

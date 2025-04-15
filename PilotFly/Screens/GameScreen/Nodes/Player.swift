@@ -3,6 +3,7 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     var playerSpeed: CGFloat = 0.15
+    private var shakeActionKey = "shakePlayer"
     
     init() {
         let texture = SKTexture(imageNamed: "plane")
@@ -37,7 +38,7 @@ class Player: SKSpriteNode {
     }
     
     func activateTrail() {
-//        trail.particleBirthRate = 100
+        //        trail.particleBirthRate = 100
     }
     
     func stopTrail() {
@@ -45,6 +46,22 @@ class Player: SKSpriteNode {
             trail.particleBirthRate = 0
         }
     }
+    
+    func startShakingPlayer() {
+        if action(forKey: shakeActionKey) != nil { return }
+
+        let moveUp = SKAction.moveBy(x: 0, y: 10, duration: 0.05)
+        let moveDown = SKAction.moveBy(x: 0, y: -10, duration: 0.05)
+        let shakeSequence = SKAction.sequence([moveUp, moveDown])
+        let shakeForever = SKAction.repeatForever(shakeSequence)
+
+        run(shakeForever, withKey: shakeActionKey)
+    }
+
+    func stopShakingPlayer() {
+        removeAction(forKey: shakeActionKey)
+    }
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
