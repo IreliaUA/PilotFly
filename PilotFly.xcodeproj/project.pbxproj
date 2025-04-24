@@ -56,6 +56,16 @@
 		39576FE52DA988F300C320E3 /* PlaneTail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 39576FE42DA988F300C320E3 /* PlaneTail.sks */; };
 		39576FE62DA988F300C320E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39576FE32DA988F300C320E3 /* Assets.xcassets */; };
 		39576FE82DAEB53800C320E3 /* ChangeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39576FE72DAEB53800C320E3 /* ChangeColor.swift */; };
+		39BEB3592DB83BEE00805367 /* Feather.sks in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB3582DB83BEE00805367 /* Feather.sks */; };
+		39BEB35E2DB939B300805367 /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB35C2DB939B300805367 /* gameMusic.mp3 */; };
+		39BEB35F2DB939B300805367 /* menuBGMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB35D2DB939B300805367 /* menuBGMusic.mp3 */; };
+		39BEB3632DB939C000805367 /* popSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB3612DB939C000805367 /* popSound.wav */; };
+		39BEB3642DB939C000805367 /* winSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB3622DB939C000805367 /* winSound.wav */; };
+		39BEB3652DB939C000805367 /* gameOverSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB3602DB939C000805367 /* gameOverSound.wav */; };
+		39BEB3672DBAA02100805367 /* Outfit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB3662DBAA02100805367 /* Outfit-Bold.ttf */; };
+		39BEB3692DBAA08000805367 /* Outfit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB3682DBAA08000805367 /* Outfit-Medium.ttf */; };
+		39BEB36B2DBAA0C000805367 /* Outfit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB36A2DBAA0C000805367 /* Outfit-Regular.ttf */; };
+		39BEB36D2DBAA11800805367 /* Outfit-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB36C2DBAA11800805367 /* Outfit-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +120,16 @@
 		39576FE32DA988F300C320E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39576FE42DA988F300C320E3 /* PlaneTail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaneTail.sks; sourceTree = "<group>"; };
 		39576FE72DAEB53800C320E3 /* ChangeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColor.swift; sourceTree = "<group>"; };
+		39BEB3582DB83BEE00805367 /* Feather.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Feather.sks; sourceTree = "<group>"; };
+		39BEB35C2DB939B300805367 /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
+		39BEB35D2DB939B300805367 /* menuBGMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuBGMusic.mp3; sourceTree = "<group>"; };
+		39BEB3602DB939C000805367 /* gameOverSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOverSound.wav; sourceTree = "<group>"; };
+		39BEB3612DB939C000805367 /* popSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = popSound.wav; sourceTree = "<group>"; };
+		39BEB3622DB939C000805367 /* winSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = winSound.wav; sourceTree = "<group>"; };
+		39BEB3662DBAA02100805367 /* Outfit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Bold.ttf"; sourceTree = "<group>"; };
+		39BEB3682DBAA08000805367 /* Outfit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Medium.ttf"; sourceTree = "<group>"; };
+		39BEB36A2DBAA0C000805367 /* Outfit-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.ttf"; sourceTree = "<group>"; };
+		39BEB36C2DBAA11800805367 /* Outfit-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,10 +162,16 @@
 		39576F362D9FEF3800C320E3 /* PilotFly */ = {
 			isa = PBXGroup;
 			children = (
+				39BEB35B2DB9398500805367 /* Music */,
+				39BEB35A2DB9397900805367 /* Sounds */,
 				39576F582D9FF1BB00C320E3 /* Managers */,
 				39576F572D9FF1B000C320E3 /* Screens */,
 				39576F2D2D9FEF3800C320E3 /* AppDelegate.swift */,
 				39576F2E2D9FEF3800C320E3 /* Assets.xcassets */,
+				39BEB3662DBAA02100805367 /* Outfit-Bold.ttf */,
+				39BEB3682DBAA08000805367 /* Outfit-Medium.ttf */,
+				39BEB36A2DBAA0C000805367 /* Outfit-Regular.ttf */,
+				39BEB36C2DBAA11800805367 /* Outfit-VariableFont_wght.ttf */,
 				39576F2F2D9FEF3800C320E3 /* Info.plist */,
 				39576F312D9FEF3800C320E3 /* LaunchScreen.storyboard */,
 			);
@@ -251,6 +277,7 @@
 				39576FB52DA6E34700C320E3 /* GameScene.swift */,
 				39576FE32DA988F300C320E3 /* Assets.xcassets */,
 				39576FE42DA988F300C320E3 /* PlaneTail.sks */,
+				39BEB3582DB83BEE00805367 /* Feather.sks */,
 			);
 			path = GameScreen;
 			sourceTree = "<group>";
@@ -266,6 +293,25 @@
 				39576FD92DA6E37000C320E3 /* ResultViewModelFactory.swift */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		39BEB35A2DB9397900805367 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				39BEB3602DB939C000805367 /* gameOverSound.wav */,
+				39BEB3612DB939C000805367 /* popSound.wav */,
+				39BEB3622DB939C000805367 /* winSound.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		39BEB35B2DB9398500805367 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				39BEB35C2DB939B300805367 /* gameMusic.mp3 */,
+				39BEB35D2DB939B300805367 /* menuBGMusic.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,15 +375,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39BEB3672DBAA02100805367 /* Outfit-Bold.ttf in Resources */,
+				39BEB35E2DB939B300805367 /* gameMusic.mp3 in Resources */,
+				39BEB35F2DB939B300805367 /* menuBGMusic.mp3 in Resources */,
+				39BEB36D2DBAA11800805367 /* Outfit-VariableFont_wght.ttf in Resources */,
+				39BEB3592DB83BEE00805367 /* Feather.sks in Resources */,
 				39576F3A2D9FEF3800C320E3 /* Assets.xcassets in Resources */,
 				39576F712DA1A7B200C320E3 /* LevelTableViewCell.xib in Resources */,
 				39576FE52DA988F300C320E3 /* PlaneTail.sks in Resources */,
 				39576FE62DA988F300C320E3 /* Assets.xcassets in Resources */,
+				39BEB36B2DBAA0C000805367 /* Outfit-Regular.ttf in Resources */,
 				39576F8B2DA1A89900C320E3 /* SettingsViewController.xib in Resources */,
+				39BEB3692DBAA08000805367 /* Outfit-Medium.ttf in Resources */,
 				39576FE02DA6E37000C320E3 /* ResultViewController.xib in Resources */,
 				39576F722DA1A7B200C320E3 /* LevelsViewController.xib in Resources */,
 				39576FD12DA6E34700C320E3 /* GameScene.sks in Resources */,
 				39576FD32DA6E34700C320E3 /* GameViewController.xib in Resources */,
+				39BEB3632DB939C000805367 /* popSound.wav in Resources */,
+				39BEB3642DB939C000805367 /* winSound.wav in Resources */,
+				39BEB3652DB939C000805367 /* gameOverSound.wav in Resources */,
 				39576F3C2D9FEF3800C320E3 /* LaunchScreen.storyboard in Resources */,
 				39576F562D9FF10100C320E3 /* MenuViewController.xib in Resources */,
 			);

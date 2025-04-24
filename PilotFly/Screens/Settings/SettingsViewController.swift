@@ -36,21 +36,34 @@ final class SettingsViewController: UIViewController {
     
     @IBAction func backButtonAction(_ sender: UIButton) {
         sender.vibrateSoftly()
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
+    
     @IBAction func soundCheckBoxAction(_ sender: UIButton) {
         presenter.changeSoundsValue()
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
         sender.vibrateSoftly()
     }
     
     @IBAction func vibrationCheckBoxAction(_ sender: UIButton) {
         presenter.changeVibrationValue()
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
         sender.vibrateSoftly()
     }
     
     @IBAction func musicCheckBoxAction(_ sender: UIButton) {
         presenter.changeMusicValue()
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
         sender.vibrateSoftly()
     }
 }

@@ -50,8 +50,8 @@ class Player: SKSpriteNode {
     func startShakingPlayer() {
         if action(forKey: shakeActionKey) != nil { return }
 
-        let moveUp = SKAction.moveBy(x: 30, y: 10, duration: 0.05)
-        let moveDown = SKAction.moveBy(x: -30, y: -10, duration: 0.05)
+        let moveUp = SKAction.moveBy(x: 20, y: 5, duration: 0.05)
+        let moveDown = SKAction.moveBy(x: -20, y: -5, duration: 0.05)
         let shakeSequence = SKAction.sequence([moveUp, moveDown])
         let shakeForever = SKAction.repeatForever(shakeSequence)
 

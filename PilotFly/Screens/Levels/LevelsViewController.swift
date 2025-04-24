@@ -46,6 +46,9 @@ final class LevelsViewController: UIViewController {
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -80,6 +83,9 @@ extension LevelsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cellModel = presenter.viewModel?.cellModels[indexPath.row] {
             if !cellModel.isLocked {
+                DispatchQueue.main.async {
+                    SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+                }
                 presenter.openGameLevel(with: cellModel.number)
             }
         }

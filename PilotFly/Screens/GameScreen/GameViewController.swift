@@ -41,7 +41,7 @@ final class GameViewController: UIViewController {
             }
 
             view.ignoresSiblingOrder = true
-            view.showsPhysics = true
+            view.showsPhysics = false
         }
     }
 
@@ -58,6 +58,9 @@ extension GameViewController: IGameViewController {
     func goBack() {
         if let navController = self.navigationController {
             SoundsManagerSanctuary.shared.playMenuBackgroundMusicSanctuary()
+            DispatchQueue.main.async {
+                SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+            }
             navController.popViewController(animated: false)
         }
     }
@@ -65,6 +68,9 @@ extension GameViewController: IGameViewController {
     func goToMenu() {
         if let menuViewController = navigationController?.viewControllers.first(where: { $0 is MenuAssembly }) {
             SoundsManagerSanctuary.shared.playMenuBackgroundMusicSanctuary()
+            DispatchQueue.main.async {
+                SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+            }
             navigationController?.popToViewController(menuViewController, animated: true)
         }
     }

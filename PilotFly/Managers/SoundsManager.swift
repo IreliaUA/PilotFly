@@ -2,9 +2,9 @@
 import AVFoundation
 
 enum Sounds: String {
-    case victorySound = "victorySound.wav"
+    case victorySound = "winSound.wav"
     case gameOverSound = "gameOverSound.wav"
-    
+    case popSound = "popSound.wav"
 }
 
 class SoundsManagerSanctuary {
@@ -46,7 +46,7 @@ class SoundsManagerSanctuary {
         if isAllowedMusicSanctuary {
             musicPlayer.stop()
             musicPlayer.currentTime = 0
-            if let path = Bundle.main.path(forResource: "mainMenuMusic.mp3", ofType: nil) {
+            if let path = Bundle.main.path(forResource: "menuBGMusic.mp3", ofType: nil) {
                 let url = URL(fileURLWithPath: path)
                 do {
                     isPlaying = true
@@ -63,7 +63,7 @@ class SoundsManagerSanctuary {
     
     func playGameMusicSanctuary() {
         if isAllowedMusicSanctuary {
-            if let path = Bundle.main.path(forResource: "gameMusicBG.wav", ofType: nil) {
+            if let path = Bundle.main.path(forResource: "gameMusic.mp3", ofType: nil) {
                 
                 let url = URL(fileURLWithPath: path)
                 

@@ -8,8 +8,6 @@ protocol IResultViewController: AnyObject {
 final class ResultViewController: UIViewController {
     @IBOutlet private weak var backGroundImageView: UIImageView!
     @IBOutlet private weak var menuButton: UIButton!
-    @IBOutlet weak var yourRecordLabel: UILabel!
-    @IBOutlet weak var buttonYouConstraint: NSLayoutConstraint!
     
     private let presenter: IResultPresenter
     private var resultType: ResultType
@@ -36,16 +34,14 @@ final class ResultViewController: UIViewController {
         let minutes = Int(bestTime) / 60
         let seconds = Int(bestTime) % 60
         
-        yourRecordLabel.text = String(format: "%02d:%02d", minutes, seconds)
-        
         switch resultType {
         case .win:
-            self.buttonYouConstraint.constant = 120
+            
             DispatchQueue.main.async {
                 SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .victorySound)
             }
         case .loss:
-            self.buttonYouConstraint.constant = 92
+            
             DispatchQueue.main.async {
                 SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .gameOverSound)
             }
@@ -54,12 +50,15 @@ final class ResultViewController: UIViewController {
     }
     
     @IBAction func homeButtonAction(_ sender: UIButton) {
-        if let menuViewController = navigationController?.viewControllers.first(where: { $0 is MenuAssembly }) {
-            presenter.onHomeButtonTap()
-            SoundsManagerSanctuary.shared.playMenuBackgroundMusicSanctuary()
-            sender.vibrateSoftly()
-            navigationController?.popToViewController(menuViewController, animated: true)
+//        if let menuViewController = navigationController?.viewControllers.first(where: { $0 is MenuViewController }) {
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
         }
+        SoundsManagerSanctuary.shared.playMenuBackgroundMusicSanctuary()
+        sender.vibrateSoftly()
+        //navigationController?.popToViewController(menuViewController, animated: true)
+    
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
@@ -67,7 +66,7 @@ final class ResultViewController: UIViewController {
 
 extension ResultViewController: IResultViewController {
     func setup(with viewModel: ResultViewModel) {
-        // textImageView.image = viewModel.mainImage
+        menuButton.setImage(viewModel.buttonImage, for: .normal)
         backGroundImageView.image = viewModel.mainImage
     }
 }

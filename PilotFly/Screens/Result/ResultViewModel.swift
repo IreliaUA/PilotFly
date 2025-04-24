@@ -7,7 +7,7 @@ enum ResultType {
 }
 
 struct ResultViewModel {
-    let bgImage: UIImage?
+    let buttonImage: UIImage?
     let mainImage: UIImage?
     let resultType: ResultType
 }

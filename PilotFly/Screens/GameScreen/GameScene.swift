@@ -28,7 +28,7 @@ final class GameScene: SKScene {
     private func setUpScene() {
         setupCamera()
         setupGameNodes()
-        setupGame()        
+        setupGame()
     }
     
     private func setupMotionManager() {
@@ -57,6 +57,36 @@ final class GameScene: SKScene {
     
     private func setupGame() {
         startGame()
+        setTrail(targetNode: self)
+    }
+    
+    var trail: SKEmitterNode!
+    
+    func setTrail(targetNode: SKNode) {
+        let selectedParticles = "Feather"
+        
+        if !selectedParticles.isEmpty {
+            if let bg = childNode(withName: "BgSprite") {
+                trail = getParticle(name: selectedParticles, targetNode: targetNode, pos: CGPoint(x: bg.frame.midX, y: bg.frame.maxY))
+                
+                trail.zPosition = bg.zPosition + 1
+                addChild(trail)
+               
+                var feaverTrail = getParticle(name: selectedParticles, targetNode: targetNode, pos: CGPoint(x: bg.frame.midX, y: bg.frame.midY))
+                feaverTrail.zPosition = bg.zPosition + 1
+                addChild(feaverTrail)
+            }
+        }
+    }
+    
+    func activateTrail() {
+        //        trail.particleBirthRate = 100
+    }
+    
+    func stopTrail() {
+        if let trail = trail {
+            trail.particleBirthRate = 0
+        }
     }
     
     private func startGame() {
@@ -70,7 +100,6 @@ final class GameScene: SKScene {
             .wait(forDuration: 3.7),
             .run {
                 self.isCanTrack = true
-               
             },
             .wait(forDuration: 1),
             .run {
@@ -79,7 +108,6 @@ final class GameScene: SKScene {
             
         ]))
         
-        let wait = SKAction.wait(forDuration: 3.0)
         let moveUp = SKAction.moveBy(x: 0, y: 2, duration: 0.01)
         let startMoving = SKAction.repeatForever(moveUp)
         
@@ -114,8 +142,8 @@ final class GameScene: SKScene {
                     
                     spawnClouds(in: zone)
                 }
-                    //                    let cloud = Cloud(size: CGSize(width: CGFloat.random(in: 100...500), height:  CGFloat.random(in: 100...500)))
-                    //                    cloud.position = CGPoint(x: CGFloat.random(in: zone.frame.minX...zone.frame.maxX) , y: zone.frame.midY)
+                //                    let cloud = Cloud(size: CGSize(width: CGFloat.random(in: 100...500), height:  CGFloat.random(in: 100...500)))
+                //                    cloud.position = CGPoint(x: CGFloat.random(in: zone.frame.minX...zone.frame.maxX) , y: zone.frame.midY)
             case "ChangeColor":
                 if let changeColor = child as? ChangeColor {
                     changeColor.setupPhysics()
@@ -141,14 +169,19 @@ final class GameScene: SKScene {
             UserDefaultsManagerCustom.shared.money += (self.currentLevelIndex * 100)
             UserDefaults.standard.set(true, forKey: "is\(self.currentLevelIndex)GameLevelCompleted")
         }
-    }
-
+        gameViewController?.showResultVC(resultType: resultType, onBackButtonClick: {
+           })
+       }
+    
     private func spawnClouds(in zone: SKSpriteNode, extraDensity: Bool = false) {
-        let zoneWidth = zone.frame.width
-        let zoneHeight = zone.frame.height
-        let baseCount = Int.random(in: 1...2)
-        
-        let cloudCount = extraDensity ? baseCount + 1 : baseCount
+        let baseCloudSize = CGSize(width: 300, height: 200)
+           let scaleFactors: [CGFloat] = [0.5, 0.66, 0.75, 0.85, 1.0, 1.15, 1.33] // адекватные масштабы
+           let cloudSizes: [CGSize] = scaleFactors.map {
+               CGSize(width: baseCloudSize.width * $0, height: baseCloudSize.height * $0)
+           }
+
+           let baseCount = Int.random(in: 1...3)
+           let cloudCount = extraDensity ? baseCount + 1 : baseCount
         
         let playerSafeZoneWidth: CGFloat = 340
         let safeZoneStartX = CGFloat.random(in: zone.frame.minX + 100...zone.frame.maxX - 100)
@@ -156,8 +189,9 @@ final class GameScene: SKScene {
         var placedCloudFrames: [CGRect] = []
         
         for _ in 0..<cloudCount {
-            let cloudWidth = CGFloat.random(in: 100...400)
-            let cloudHeight = CGFloat.random(in: 100...400)
+            let randomSize = cloudSizes.randomElement()!
+                   let cloudWidth = randomSize.width
+                   let cloudHeight = randomSize.height
             
             var cloudX: CGFloat
             var attempts = 0
@@ -214,7 +248,7 @@ final class GameScene: SKScene {
             }
         }
     }
-
+    
     private func changeBackgroundColor(to color: UIColor) {
         if let bgSprite = childNode(withName: "BgSprite") as? SKSpriteNode {
             let colorOverlay = SKSpriteNode(color: color, size: bgSprite.size)
@@ -251,6 +285,8 @@ extension GameScene: SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         self.setUpScene()
         self.physicsWorld.contactDelegate = self
+        SoundsManagerSanctuary.shared.stopPlayingSanctuary()
+        SoundsManagerSanctuary.shared.playGameMusicSanctuary()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -277,21 +313,21 @@ extension GameScene: SKPhysicsContactDelegate {
             lhs: firstBody.categoryBitMask & PhysicsBodies.player,
             rhs: secondBody.categoryBitMask & PhysicsBodies.border
         ) {
-            //            showResultVC(resultType: .loss)
+                       showResultVC(resultType: .loss)
         }
         
         if .touched(
             lhs: firstBody.categoryBitMask & PhysicsBodies.player,
             rhs: secondBody.categoryBitMask & PhysicsBodies.cloud
         ) {
-            //            showResultVC(resultType: .loss)
+                      showResultVC(resultType: .loss)
         }
         
         if .touched(
             lhs: firstBody.categoryBitMask & PhysicsBodies.player,
             rhs: secondBody.categoryBitMask & PhysicsBodies.finishNode
         ) {
-            //            showResultVC(resultType: .win)
+                      showResultVC(resultType: .win)
         }
         
         if .touched(
@@ -304,15 +340,24 @@ extension GameScene: SKPhysicsContactDelegate {
                 
                 if !isColorChanged {
                     changeBackgroundColor(to: .darkRedC)
-                    changeCloudsColor(to: .darkGrayC)
                     player.startShakingPlayer()
-                    
                     spawnExtraClouds()
+                    changeCloudsColor(to: .darkGrayC)
+                    
+                    player.removeAction(forKey: "moveUp")
+                    let moveUp = SKAction.moveBy(x: 0, y: 2, duration: 0.005)
+                    let startMoving = SKAction.repeatForever(moveUp)
+                    player.run(SKAction.sequence([startMoving]), withKey: "moveUp")
                     
                 } else {
                     changeBackgroundColor(to: .clear)
                     changeCloudsColor(to: nil)
                     player.stopShakingPlayer()
+                    
+                    player.removeAction(forKey: "moveUp")
+                    let moveUp = SKAction.moveBy(x: 0, y: 2, duration: 0.01)
+                    let startMoving = SKAction.repeatForever(moveUp)
+                    player.run(SKAction.sequence([startMoving]), withKey: "moveUp")
                 }
                 isColorChanged.toggle()
             }

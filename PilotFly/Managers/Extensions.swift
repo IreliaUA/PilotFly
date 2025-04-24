@@ -259,3 +259,10 @@ extension SKCameraNode {
         self.run(.sequence(arrActions))
     }
 }
+
+extension UISwitch {
+    func vibrateSoftly() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+    }
+}

@@ -39,11 +39,17 @@ final class MenuViewController: UIViewController {
     
     @IBAction func playButtonAction(_ sender: UIButton) {
         sender.vibrateSoftly()
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
         presenter.showGameScreen()
     }
     
     @IBAction func settingsButtonAction(_ sender: UIButton) {
         sender.vibrateSoftly()
+        DispatchQueue.main.async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
         presenter.showSettingsAncientScreen()
     }
   
