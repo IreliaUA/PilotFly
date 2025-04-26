@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,9 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="levelsBg" translatesAutoresizingMaskIntoConstraints="NO" id="9KG-gI-LJW">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIM-BF-lMl">
                     <rect key="frame" x="16" y="85" width="40" height="40"/>
                     <constraints>
@@ -35,8 +32,8 @@
                         <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="chW-Ta-Nsb"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingsTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4ek-aE-EWN">
-                    <rect key="frame" x="72.666666666666686" y="59" width="248" height="92"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="levelsTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4ek-aE-EWN">
+                    <rect key="frame" x="108.66666666666667" y="59" width="175.66666666666663" height="92"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="92" id="Dug-Hx-Kar"/>
                     </constraints>
@@ -49,30 +46,25 @@
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="whiteCreamC"/>
             <constraints>
                 <constraint firstItem="BY5-jW-oGm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1AI-sB-nwg"/>
-                <constraint firstItem="9KG-gI-LJW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5hA-YX-5wT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BY5-jW-oGm" secondAttribute="trailing" constant="20" id="DXU-Q8-NOe"/>
                 <constraint firstAttribute="bottom" secondItem="BY5-jW-oGm" secondAttribute="bottom" id="EEN-Qz-tcz"/>
                 <constraint firstItem="dIM-BF-lMl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Spj-su-ULC"/>
                 <constraint firstItem="dIM-BF-lMl" firstAttribute="centerY" secondItem="4ek-aE-EWN" secondAttribute="centerY" id="UAi-7S-i2L"/>
                 <constraint firstItem="4ek-aE-EWN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WxW-Xr-2Kf"/>
-                <constraint firstAttribute="bottom" secondItem="9KG-gI-LJW" secondAttribute="bottom" id="XeW-Mk-1KZ"/>
                 <constraint firstItem="4ek-aE-EWN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cKg-IF-x4M"/>
                 <constraint firstItem="BY5-jW-oGm" firstAttribute="top" secondItem="4ek-aE-EWN" secondAttribute="bottom" constant="8" id="gDl-P7-IfC"/>
-                <constraint firstItem="9KG-gI-LJW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rnq-gJ-2s9"/>
-                <constraint firstItem="9KG-gI-LJW" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wpy-Yg-PhM"/>
             </constraints>
             <point key="canvasLocation" x="116.79389312977099" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
         <image name="backButton" width="40" height="40"/>
-        <image name="levelsBg" width="430" height="932"/>
-        <image name="settingsTitle" width="248" height="98"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="levelsTitle" width="175.66667175292969" height="74.666664123535156"/>
+        <namedColor name="whiteCreamC">
+            <color red="1" green="0.96078431372549022" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

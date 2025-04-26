@@ -39,7 +39,7 @@ final class MenuViewController: UIViewController {
     
     @IBAction func playButtonAction(_ sender: UIButton) {
         sender.vibrateSoftly()
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .userInitiated).async {
             SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
         }
         presenter.showGameScreen()
@@ -47,12 +47,20 @@ final class MenuViewController: UIViewController {
     
     @IBAction func settingsButtonAction(_ sender: UIButton) {
         sender.vibrateSoftly()
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .userInitiated).async {
             SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
         }
         presenter.showSettingsAncientScreen()
     }
-  
+    
+    
+    @IBAction func infoButtonAction(_ sender: UIButton) {
+        sender.vibrateSoftly()
+        DispatchQueue.global(qos: .userInitiated).async {
+            SoundsManagerSanctuary.shared.playSoundSanctuary(nameSound: .popSound)
+        }
+        presenter.showInfoScreen()
+    }
 }
 
 // MARK: - Extensions

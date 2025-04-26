@@ -1,11 +1,13 @@
 
 import UIKit
+import SwiftUI
 
 protocol IMenuPresenter {
     func viewDidLoad()
     var viewModel: MenuViewModel? { get }
     func showSettingsAncientScreen()
     func showGameScreen()
+    func showInfoScreen()
 }
 
 final class MenuPresenter: IMenuPresenter {
@@ -34,5 +36,11 @@ final class MenuPresenter: IMenuPresenter {
     func showGameScreen() {
         let mods = LevelsAssembly().assemble()
         view?.navigationController?.pushViewController(mods, animated: true)
+    }
+    
+    func showInfoScreen() {
+        let detailExerciseView = InfoView()
+        let hostingController = UIHostingController(rootView: detailExerciseView)
+        view?.navigationController?.pushViewController(hostingController, animated: true)
     }
 }

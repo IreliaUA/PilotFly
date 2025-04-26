@@ -66,6 +66,7 @@
 		39BEB3692DBAA08000805367 /* Outfit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB3682DBAA08000805367 /* Outfit-Medium.ttf */; };
 		39BEB36B2DBAA0C000805367 /* Outfit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB36A2DBAA0C000805367 /* Outfit-Regular.ttf */; };
 		39BEB36D2DBAA11800805367 /* Outfit-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39BEB36C2DBAA11800805367 /* Outfit-VariableFont_wght.ttf */; };
+		39BEB3702DBD7AAF00805367 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BEB36F2DBD7AAF00805367 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		39BEB3682DBAA08000805367 /* Outfit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Medium.ttf"; sourceTree = "<group>"; };
 		39BEB36A2DBAA0C000805367 /* Outfit-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.ttf"; sourceTree = "<group>"; };
 		39BEB36C2DBAA11800805367 /* Outfit-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		39BEB36F2DBD7AAF00805367 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 		39576F572D9FF1B000C320E3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				39BEB36E2DBD7A9600805367 /* Info */,
 				39576FDA2DA6E37000C320E3 /* Result */,
 				39576FB92DA6E34700C320E3 /* GameScreen */,
 				39576F732DA1A86400C320E3 /* Settings */,
@@ -312,6 +315,14 @@
 				39BEB35D2DB939B300805367 /* menuBGMusic.mp3 */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		39BEB36E2DBD7A9600805367 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				39BEB36F2DBD7AAF00805367 /* InfoView.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,6 +448,7 @@
 				39576F862DA1A89900C320E3 /* SettingsViewModel.swift in Sources */,
 				39576F872DA1A89900C320E3 /* SettingsViewModelFactory.swift in Sources */,
 				39576F882DA1A89900C320E3 /* SettingsPresenter.swift in Sources */,
+				39BEB3702DBD7AAF00805367 /* InfoView.swift in Sources */,
 				39576F892DA1A89900C320E3 /* SettingsAssembly.swift in Sources */,
 				39576F8A2DA1A89900C320E3 /* SettingsViewController.swift in Sources */,
 				39576F6D2DA1A7B200C320E3 /* LevelTableViewCell.swift in Sources */,
