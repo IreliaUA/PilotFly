@@ -4,7 +4,7 @@ import SwiftUI
 struct InfoView: View {
     @State private var scrollOffset: CGFloat = 0
     @State private var totalContentWidth: CGFloat = 0
-    
+    @Environment(\.presentationMode) var presentationMode
     
     init() {
         UIScrollView.appearance().bounces = false
@@ -15,14 +15,14 @@ struct InfoView: View {
             let screenWidth = geometry.size.width
             
             ZStack {
-                //add back and title
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 0) {
                         ForEach(0..<3) { index in
                             GeometryReader { innerGeo in
                                 Image("info\(index + 1)")
                                     .resizable()
-                                    .scaledToFill()
+//                                    .scaledToFill()
                                     .frame(width: screenWidth, height: geometry.size.height)
                                     .clipped()
                                     .onAppear {
@@ -38,6 +38,23 @@ struct InfoView: View {
                             .frame(width: screenWidth, height: geometry.size.height)
                         }
                     }
+                }
+                
+                VStack {
+                    Spacer().frame(height: 50)
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(.backButton)
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                                .padding()
+//                                .padding(.top, -10)
+                        }
+                        Spacer()
+                    }
+                    Spacer()
                 }
                 
                 ZStack {
