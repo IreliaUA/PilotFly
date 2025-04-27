@@ -27,29 +27,28 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudLevels" translatesAutoresizingMaskIntoConstraints="NO" id="RZO-Da-5L8">
                                         <rect key="frame" x="0.0" y="0.0" width="378" height="100"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completedLevelIcon" translatesAutoresizingMaskIntoConstraints="NO" id="38x-uM-PRA">
-                                        <rect key="frame" x="16" y="7" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="DgM-bg-BLg"/>
-                                            <constraint firstAttribute="width" constant="44" id="fGm-eP-hCC"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cn6-Ct-4TK">
-                                        <rect key="frame" x="185.66666666666666" y="37.333333333333336" width="7" height="25.333333333333336"/>
+                                        <rect key="frame" x="185.33333333333334" y="37.333333333333336" width="7.3333333333333428" height="25.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Outfit-SemiBold" family="Outfit" pointSize="20"/>
                                         <color key="textColor" name="blueDarkC "/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completedLevelIcon" translatesAutoresizingMaskIntoConstraints="NO" id="38x-uM-PRA">
+                                        <rect key="frame" x="194.66666666666666" y="40" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="DgM-bg-BLg"/>
+                                            <constraint firstAttribute="width" constant="20" id="fGm-eP-hCC"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="RZO-Da-5L8" secondAttribute="bottom" id="4VE-Re-I4g"/>
                                     <constraint firstItem="RZO-Da-5L8" firstAttribute="leading" secondItem="WH4-Dd-yzi" secondAttribute="leading" id="7GG-P0-93W"/>
-                                    <constraint firstItem="cn6-Ct-4TK" firstAttribute="leading" secondItem="38x-uM-PRA" secondAttribute="trailing" constant="8" id="B2u-Nn-o0y"/>
-                                    <constraint firstItem="38x-uM-PRA" firstAttribute="leading" secondItem="WH4-Dd-yzi" secondAttribute="leading" constant="16" id="EOp-R1-Bay"/>
+                                    <constraint firstItem="38x-uM-PRA" firstAttribute="leading" secondItem="cn6-Ct-4TK" secondAttribute="trailing" constant="2" id="AYO-bX-aF5"/>
                                     <constraint firstItem="RZO-Da-5L8" firstAttribute="top" secondItem="WH4-Dd-yzi" secondAttribute="top" id="Gwb-Nn-w5s"/>
-                                    <constraint firstItem="38x-uM-PRA" firstAttribute="centerY" secondItem="WH4-Dd-yzi" secondAttribute="centerY" constant="-3" id="QAZ-sz-u2L"/>
+                                    <constraint firstItem="38x-uM-PRA" firstAttribute="centerY" secondItem="cn6-Ct-4TK" secondAttribute="centerY" id="OOl-4u-nFM"/>
                                     <constraint firstItem="cn6-Ct-4TK" firstAttribute="centerX" secondItem="WH4-Dd-yzi" secondAttribute="centerX" id="bV6-8o-uwB"/>
                                     <constraint firstItem="cn6-Ct-4TK" firstAttribute="centerY" secondItem="WH4-Dd-yzi" secondAttribute="centerY" id="iuK-Jx-JqV"/>
                                     <constraint firstAttribute="height" constant="100" id="uGS-AX-Rl4"/>
@@ -66,11 +65,6 @@
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="38x-uM-PRA"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,7 +97,7 @@
     </objects>
     <resources>
         <image name="cloudLevels" width="390" height="112"/>
-        <image name="completedLevelIcon" width="1455" height="11094"/>
+        <image name="completedLevelIcon" width="27.666666030883789" height="23.333333969116211"/>
         <namedColor name="blueDarkC ">
             <color red="0.45098039215686275" green="0.66666666666666663" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

@@ -29,6 +29,14 @@ final class GameScene: SKScene {
         setupCamera()
         setupGameNodes()
         setupGame()
+        
+//        for child in children {
+//            if child.name == "BgSprite" {
+//                if let childBg = child as? SKSpriteNode {
+//                    childBg.texture = SKTexture(imageNamed: "bgGame")
+//                }
+//            }
+//        }
     }
     
     private func setupMotionManager() {
