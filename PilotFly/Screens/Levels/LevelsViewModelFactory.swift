@@ -20,7 +20,7 @@ final class LevelsViewModelFactory: ILevelsViewModelFactory {
             )
         )
         
-        for index in 2...15 {
+        for index in 2...12 {
             cellModels.append(
                 LevelCellModel(
                     number: index,

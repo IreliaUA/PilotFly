@@ -39,6 +39,8 @@ final class LevelsViewController: UIViewController {
         levelstTableView.delegate = self
         levelstTableView.dataSource = self
         levelstTableView.separatorStyle = .none
+        levelstTableView.showsVerticalScrollIndicator = false
+        levelstTableView.showsHorizontalScrollIndicator = false
         levelstTableView.rowHeight = 76
         levelstTableView.estimatedRowHeight = 76
         let nib = UINib(nibName: String(describing: LevelTableViewCell.self), bundle: nil)
